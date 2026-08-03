@@ -1,0 +1,57 @@
+name: Package & Publish
+
+# Builds the .vsix on every push, and publishes to the VS Code Marketplace on tags (v*).
+# Requires repo secret VSCE_PAT — an Azure DevOps PAT scoped to the Marketplace publisher.
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+        with:
+          path: PyNetVSCode
+
+      # The viewer source lives in the sibling PyNetLibrary repo (03_Viewer).
+      - name: Checkout viewer source (PyNetLibrary)
+        uses: actions/checkout@v4
+        with:
+          repository: Rafael-NunezDeArenas/PyNetLibrary
+          path: PyNetLibrary
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install extension deps
+        working-directory: PyNetVSCode
+        run: npm ci
+
+      - name: Build viewer + compile + package
+        working-directory: PyNetVSCode
+        env:
+          PYNET_VIEWER_DIR: ${{ github.workspace }}/PyNetLibrary/03_Viewer
+        run: |
+          npm run package
+          npx --yes @vscode/vsce package --no-dependencies
+
+      - name: Upload .vsix artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: PyNetVSCode/*.vsix
+
+      - name: Publish to Marketplace (tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        working-directory: PyNetVSCode
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: npx --yes @vscode/vsce publish --no-dependencies --pat "$env:VSCE_PAT"

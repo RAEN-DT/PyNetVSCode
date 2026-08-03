@@ -1,0 +1,165 @@
+{
+  "name": "pynet-platform",
+  "displayName": "PyNet Platform",
+  "description": "Embeds the That Open IFC viewer and installs/configures the PyNet MCP Bridge for Autodesk (Navisworks, Revit, Civil 3D) across your AI clients.",
+  "version": "0.1.24",
+  "publisher": "RAENDT",
+  "author": {
+    "name": "RAEN Digital Tools"
+  },
+  "license": "MIT",
+  "icon": "media/pynet.png",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "AI",
+    "Visualization"
+  ],
+  "keywords": [
+    "mcp",
+    "bim",
+    "ifc",
+    "navisworks",
+    "revit",
+    "civil3d",
+    "pynet",
+    "autodesk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rafael-NunezDeArenas/PyNetVSCode"
+  },
+  "homepage": "https://github.com/Rafael-NunezDeArenas/PyNetVSCode#readme",
+  "bugs": {
+    "url": "https://github.com/Rafael-NunezDeArenas/PyNetVSCode/issues"
+  },
+  "galleryBanner": {
+    "color": "#1e2430",
+    "theme": "dark"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "pynet.openViewer",
+        "title": "Open BIM Model",
+        "category": "PyNet",
+        "icon": "$(add)"
+      },
+      {
+        "command": "pynet.installBridge",
+        "title": "Install / Repair MCP Bridge",
+        "category": "PyNet"
+      },
+      {
+        "command": "pynet.clearRecent",
+        "title": "Clear Recent Models",
+        "category": "PyNet",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "pynet.removeRecent",
+        "title": "Remove from Recent",
+        "category": "PyNet",
+        "icon": "$(trash)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "pynet",
+          "title": "PyNet Platform",
+          "icon": "media/Pynet.svg"
+        }
+      ]
+    },
+    "views": {
+      "pynet": [
+        {
+          "id": "pynet.home",
+          "name": "Recent Models",
+          "type": "tree"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "pynet.home",
+        "contents": "Select PyNET viewer package to explore a BIM Model.\n[Open BIM Model](command:pynet.openViewer)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "pynet.openViewer",
+          "when": "view == pynet.home",
+          "group": "navigation"
+        },
+        {
+          "command": "pynet.installBridge",
+          "when": "view == pynet.home",
+          "group": "1_actions@1"
+        },
+        {
+          "command": "pynet.clearRecent",
+          "when": "view == pynet.home",
+          "group": "1_actions@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "pynet.removeRecent",
+          "when": "view == pynet.home && viewItem == pynetRecentModel",
+          "group": "inline"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "pynet.clearRecent",
+          "when": "false"
+        },
+        {
+          "command": "pynet.removeRecent",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "PyNet Platform",
+      "properties": {
+        "pynet.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the Python 3.10+ executable. Leave empty to auto-detect (python / py -3 on PATH)."
+        },
+        "pynet.autoInstallBridgeOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "On first activation, install the PyNet MCP Bridge and configure detected AI clients if not already present."
+        },
+        "pynet.viewerPort": {
+          "type": "number",
+          "default": 0,
+          "description": "Port for the local viewer server. 0 = pick a free port automatically."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "build:viewer": "node ./scripts/build-viewer.mjs",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run build:viewer && npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.0"
+  }
+}

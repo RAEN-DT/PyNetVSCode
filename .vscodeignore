@@ -1,0 +1,13 @@
+# Sources & build config — only ship compiled dist/ + media/
+src/**
+scripts/**
+tsconfig.json
+.gitignore
+**/*.map
+**/*.ts
+node_modules/**
+.vscode-test/**
+**/.git/**
+
+# Keep: dist/**, media/** (icon + bundled viewer + pnt_server)
+!media/viewer/**
