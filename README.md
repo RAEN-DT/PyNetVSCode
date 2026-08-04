@@ -17,6 +17,10 @@
 Autodesk **Navisworks, Revit and Civil 3D** — so it can explore, explain and operate the model
 in natural language, without leaving the editor.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/RAEN-DT/PyNetVSCode/main/Assets/Pynet_view_example.png" alt="A federated model open in the PyNET Viewer, with element properties and the recent-models list" width="100%"/>
+</p>
+
 ### 📥 Request your 30-day **Trial** here:
 Contact: **info@raendt.com** to request access.
 
@@ -42,6 +46,13 @@ so it can point at what it is describing:
 > *"Isolate the structural discipline and hide everything else."*
 >
 > *"List every duct type on level 2 with its element id."*
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/RAEN-DT/PyNetVSCode/main/Assets/Pynet_view_AI.png" alt="The assistant breaking down 3,706 clashes by test, with the selected clash pair highlighted in the viewer — column in red against slab in green" width="100%"/>
+</p>
+
+<p align="center"><sub>The assistant reads the package, explains what it found, and highlights the
+pair it is talking about — column in red, slab in green, everything else hidden.</sub></p>
 
 ---
 
