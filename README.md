@@ -4,18 +4,11 @@
 
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=RAENDT.pynet-platform"><img src="https://img.shields.io/visual-studio-marketplace/v/RAENDT.pynet-platform?label=marketplace&color=4388B1" alt="Marketplace"/></a>
-  <img src="https://img.shields.io/badge/python-3.10%20%E2%80%93%203.13-blue" alt="Python"/>
+  <img src="https://img.shields.io/badge/python-3.10%20%E2%80%93%203.14-blue" alt="Python"/>
   <img src="https://img.shields.io/badge/platform-Windows-lightgrey" alt="Windows"/>
-  <img src="https://img.shields.io/badge/hosts-Navisworks%20%C2%B7%20Revit%20%C2%B7%20Civil%203D-orange" alt="Hosts"/>
+  <img src="https://img.shields.io/badge/host-Visual%20Studio%20Code-0078D4" alt="Host"/>
+  <img src="https://img.shields.io/badge/format-.pnt-orange" alt="Format"/>
   <img src="https://img.shields.io/badge/MCP-compatible-8A2BE2" alt="MCP"/>
-</p>
-
-<p align="center">
-  <a href="https://github.com/RAEN-DT">Organization</a> &middot;
-  <a href="https://github.com/RAEN-DT/PyNet">Platform</a> &middot;
-  <a href="https://github.com/RAEN-DT/PyNetBridge">Bridge</a> &middot;
-  <a href="https://github.com/RAEN-DT/PyNetLibrary">Library</a> &middot;
-  <a href="https://github.com/RAEN-DT/PyNet/wiki/PyNET-FAQs">FAQs</a>
 </p>
 
 #
@@ -24,8 +17,8 @@
 Autodesk **Navisworks, Revit and Civil 3D** — so it can explore, explain and operate the model
 in natural language, without leaving the editor.
 
-### 📥 Request the Beta Testing 30 days **Trial** here:
-Contact: **info@raendt.com** to request beta access.
+### 📥 Request your 30-day **Trial** here:
+Contact: **info@raendt.com** to request access.
 
 ---
 
@@ -57,7 +50,7 @@ so it can point at what it is describing:
 | Requirement | Detail |
 | :--- | :--- |
 | **Windows** | The Autodesk hosts are Windows-only. |
-| **Python 3.10 – 3.13** | Mandatory — both the bridge and the viewer server run on it. Auto-detected on `PATH`, or set `pynet.pythonPath`. |
+| **Python 3.10 – 3.14** | Mandatory — both the bridge and the viewer server run on it. Auto-detected on `PATH`, or set `pynet.pythonPath`. |
 | **PyNet plugin** | Only needed to drive Autodesk from your AI client. **The viewer works without it.** |
 
 ---
