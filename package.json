@@ -2,7 +2,7 @@
   "name": "pynet-platform",
   "displayName": "PyNet Platform",
   "description": "Embeds the That Open IFC viewer and installs/configures the PyNet MCP Bridge for Autodesk (Navisworks, Revit, Civil 3D) across your AI clients.",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "publisher": "RAENDT",
   "author": {
     "name": "RAEN Digital Tools"
@@ -29,11 +29,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Rafael-NunezDeArenas/PyNetVSCode"
+    "url": "https://github.com/RAEN-DT/PyNetVSCode"
   },
-  "homepage": "https://github.com/Rafael-NunezDeArenas/PyNetVSCode#readme",
+  "homepage": "https://github.com/RAEN-DT/PyNetVSCode#readme",
   "bugs": {
-    "url": "https://github.com/Rafael-NunezDeArenas/PyNetVSCode/issues"
+    "url": "https://github.com/RAEN-DT/PyNetVSCode/issues"
   },
   "galleryBanner": {
     "color": "#1e2430",
@@ -67,6 +67,12 @@
         "title": "Remove from Recent",
         "category": "PyNet",
         "icon": "$(trash)"
+      },
+      {
+        "command": "pynet.openLibrary",
+        "title": "Open Reference Library",
+        "category": "PyNet",
+        "icon": "$(book)"
       }
     ],
     "viewsContainers": {
@@ -106,9 +112,14 @@
           "group": "1_actions@1"
         },
         {
-          "command": "pynet.clearRecent",
+          "command": "pynet.openLibrary",
           "when": "view == pynet.home",
           "group": "1_actions@2"
+        },
+        {
+          "command": "pynet.clearRecent",
+          "when": "view == pynet.home",
+          "group": "1_actions@3"
         }
       ],
       "view/item/context": [
@@ -153,9 +164,10 @@
   "scripts": {
     "vscode:prepublish": "npm run package",
     "build:viewer": "node ./scripts/build-viewer.mjs",
+    "stage:library": "node ./scripts/stage-library.mjs",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "npm run build:viewer && npm run compile"
+    "package": "npm run build:viewer && npm run stage:library && npm run compile"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

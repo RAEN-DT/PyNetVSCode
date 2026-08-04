@@ -12,6 +12,7 @@ import { ServerManager } from "./serverManager";
 import { ViewerPanel } from "./viewerPanel";
 import { runInstallCommand, bridgeAlreadyInstalled } from "./bridgeInstaller";
 import { RecentModelsProvider } from "./recentModels";
+import { deployLibrary, offerToOpenLibrary, openLibraryCommand } from "./referenceLibrary";
 
 const BRIDGE_INSTALLED_KEY = "pynet.bridgeAutoInstalled";
 
@@ -34,10 +35,12 @@ export function activate(context: vscode.ExtensionContext): void {
     ),
     vscode.commands.registerCommand("pynet.installBridge", () => runInstallCommand(output)),
     vscode.commands.registerCommand("pynet.clearRecent", () => recent.clear()),
-    vscode.commands.registerCommand("pynet.removeRecent", (model) => recent.remove(model))
+    vscode.commands.registerCommand("pynet.removeRecent", (model) => recent.remove(model)),
+    vscode.commands.registerCommand("pynet.openLibrary", () => openLibraryCommand(output))
   );
 
   void maybeAutoInstall(context, output);
+  void maybeDeployLibrary(context, output);
 }
 
 /**
@@ -115,6 +118,17 @@ async function maybeAutoInstall(
   }
   await runInstallCommand(output);
   await context.globalState.update(BRIDGE_INSTALLED_KEY, true);
+}
+
+/** Deploy the reference docs to %APPDATA%\Pynet\Library, nudging the user only on a fresh copy. */
+async function maybeDeployLibrary(
+  context: vscode.ExtensionContext,
+  output: vscode.OutputChannel
+): Promise<void> {
+  const written = await deployLibrary(context, output);
+  if (written) {
+    await offerToOpenLibrary(context);
+  }
 }
 
 export function deactivate(): void {

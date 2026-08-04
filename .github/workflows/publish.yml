@@ -24,7 +24,7 @@ jobs:
       - name: Checkout viewer source (PyNetLibrary)
         uses: actions/checkout@v4
         with:
-          repository: Rafael-NunezDeArenas/PyNetLibrary
+          repository: RAEN-DT/PyNetLibrary
           path: PyNetLibrary
 
       - uses: actions/setup-node@v4
@@ -39,6 +39,7 @@ jobs:
         working-directory: PyNetVSCode
         env:
           PYNET_VIEWER_DIR: ${{ github.workspace }}/PyNetLibrary/03_Viewer
+          PYNET_LIBRARY_DIR: ${{ github.workspace }}/PyNetLibrary
         run: |
           npm run package
           npx --yes @vscode/vsce package --no-dependencies

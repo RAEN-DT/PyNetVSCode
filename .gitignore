@@ -4,3 +4,4 @@ out/
 *.vsix
 .vscode-test/
 media/viewer/
+media/library/
