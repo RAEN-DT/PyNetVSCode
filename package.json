@@ -2,7 +2,7 @@
   "name": "pynet-viewer",
   "displayName": "PyNET Viewer — BIM for VS Code",
   "description": "Explore federated BIM models in VS Code and let your AI assistant drive Autodesk Navisworks, Revit and Civil 3D in natural language.",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "publisher": "RAENDT",
   "author": {
     "name": "RAEN Digital Tools"

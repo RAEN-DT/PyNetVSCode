@@ -22,9 +22,23 @@ export function libraryPath(): string {
 }
 
 /**
+ * True when the full PyNET Library installer has already populated this folder — it ships
+ * 01_Scripts, the API stubs and 00_References, none of which travel inside the extension.
+ */
+function fullLibraryInstalled(dest: string): boolean {
+  return fs.existsSync(path.join(dest, "01_Scripts"));
+}
+
+/**
  * Copy the bundled docs to %APPDATA%\Pynet\Library if this extension version has not deployed
  * them yet. Returns true when files were written. Never throws — a failed deploy must not stop
  * the extension from activating.
+ *
+ * The PyNET Library installer owns this same folder and ships strictly more than we do: router,
+ * docs/, .claude/commands, 01_Scripts, the stubs and 00_References. Ours is the standalone subset
+ * for people who only installed the extension, and its CLAUDE.md carries a preamble stating that
+ * the scripts and stubs are absent — which stops being true the moment the full Library lands
+ * next to it. So when we detect one, we write nothing at all and let it be authoritative.
  */
 export async function deployLibrary(
   context: vscode.ExtensionContext,
@@ -39,15 +53,23 @@ export async function deployLibrary(
   const dest = libraryPath();
   const deployed = context.globalState.get<string>(DEPLOYED_VERSION_KEY);
   const current = context.extension.packageJSON.version as string;
-  if (deployed === current && fs.existsSync(path.join(dest, "CLAUDE.md"))) {
+  if (deployed === current && fs.existsSync(path.join(dest, "docs"))) {
     return false; // already current
   }
 
   try {
+    if (fullLibraryInstalled(dest)) {
+      output.appendLine(
+        `Full PyNET Library already installed at ${dest} — it ships everything we would, ` +
+          `so nothing was written.`
+      );
+      await context.globalState.update(DEPLOYED_VERSION_KEY, current);
+      return false; // nothing deployed: do not nudge the user to open a folder they already have
+    }
     fs.mkdirSync(dest, { recursive: true });
     fs.cpSync(source, dest, { recursive: true, force: true });
     await context.globalState.update(DEPLOYED_VERSION_KEY, current);
-    output.appendLine(`Reference library deployed to ${dest}`);
+    output.appendLine(`Reference docs deployed to ${dest}`);
     return true;
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);

@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=RAENDT.pynet-viewer"><img src="https://img.shields.io/badge/marketplace-v0.1.27-4388B1" alt="Marketplace"/></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=RAENDT.pynet-viewer"><img src="https://img.shields.io/badge/marketplace-v0.1.28-4388B1" alt="Marketplace"/></a>
   <img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python"/>
   <img src="https://img.shields.io/badge/platform-Windows-lightgrey" alt="Windows"/>
   <img src="https://img.shields.io/badge/host-Visual%20Studio%20Code-0078D4" alt="Host"/>
