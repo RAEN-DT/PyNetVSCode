@@ -1,7 +1,7 @@
 /**
  * python.ts — resolve a usable Python 3.10+ interpreter.
  *
- * Python is mandatory for the whole PyNet infrastructure (bridge + viewer server), so this is
+ * Python is mandatory for the whole PyNET infrastructure (bridge + viewer server), so this is
  * shared by both bridgeInstaller.ts and serverManager.ts. Resolution order:
  *   1. `pynet.pythonPath` setting (explicit override)
  *   2. `python` on PATH

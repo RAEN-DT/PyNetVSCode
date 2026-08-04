@@ -1,5 +1,5 @@
 /**
- * referenceLibrary.ts — deploy the bundled PyNet reference docs to a stable, well-known path.
+ * referenceLibrary.ts — deploy the bundled PyNET reference docs to a stable, well-known path.
  *
  * The AI assistant needs the routing docs (CLAUDE.md + docs/) loaded before it writes a script
  * for an Autodesk host. Rather than editing the user's own instruction files — every client keeps
@@ -69,7 +69,7 @@ export async function offerToOpenLibrary(context: vscode.ExtensionContext): Prom
   const LATER = "Not now";
   const NEVER = "Don't show again";
   const choice = await vscode.window.showInformationMessage(
-    "PyNet reference docs installed. Open them as a folder so your AI assistant knows how to " +
+    "PyNET reference docs installed. Open them as a folder so your AI assistant knows how to " +
       "drive Navisworks, Revit and Civil 3D.",
     OPEN,
     LATER,
@@ -87,7 +87,7 @@ export async function openLibraryCommand(output: vscode.OutputChannel): Promise<
   const dest = libraryPath();
   if (!fs.existsSync(dest)) {
     vscode.window.showWarningMessage(
-      "PyNet reference library is not installed yet. Reload the window and try again."
+      "PyNET reference library is not installed yet. Reload the window and try again."
     );
     return;
   }

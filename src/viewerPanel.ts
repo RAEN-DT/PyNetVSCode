@@ -37,7 +37,7 @@ export class ViewerPanel {
 
     const panel = vscode.window.createWebviewPanel(
       "pynet.viewer",
-      "PyNet BIM Viewer",
+      "PyNET Viewer",
       vscode.ViewColumn.Active,
       {
         enableScripts: true,
@@ -92,7 +92,7 @@ export class ViewerPanel {
     if (msg.event === "loadError") {
       const detail = `${msg.model ?? "model"}: ${msg.message ?? "unknown error"}`;
       this.output?.appendLine(`ERROR loading in viewer: ${detail}`);
-      void vscode.window.showErrorMessage(`PyNet: failed to load ${detail}`);
+      void vscode.window.showErrorMessage(`PyNET: failed to load ${detail}`);
     }
     if (msg.event === "loadError" || msg.event === "modelsLoaded") {
       this.pendingLoad?.();
@@ -126,7 +126,7 @@ export class ViewerPanel {
   </style>
 </head>
 <body>
-  <iframe id="viewer" allow="fullscreen" title="PyNet BIM Viewer"></iframe>
+  <iframe id="viewer" allow="fullscreen" title="PyNET Viewer"></iframe>
   <script>
     const vscodeApi = acquireVsCodeApi();
     const iframeEl = document.getElementById("viewer");

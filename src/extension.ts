@@ -1,5 +1,5 @@
 /**
- * extension.ts — PyNet Platform activation entrypoint.
+ * extension.ts — PyNET Viewer activation entrypoint.
  *
  * Commands:
  *   pynet.openViewer   — pick a .pnt (native dialog) or reopen a recent one, load it into the
@@ -19,7 +19,7 @@ const BRIDGE_INSTALLED_KEY = "pynet.bridgeAutoInstalled";
 let server: ServerManager | undefined;
 
 export function activate(context: vscode.ExtensionContext): void {
-  const output = vscode.window.createOutputChannel("PyNet Platform");
+  const output = vscode.window.createOutputChannel("PyNET Viewer");
   context.subscriptions.push(output);
 
   server = new ServerManager(context.extensionPath, output);
@@ -71,7 +71,7 @@ async function openModel(
     }
 
     await vscode.window.withProgress(
-      { location: vscode.ProgressLocation.Notification, title: "PyNet: loading model…" },
+      { location: vscode.ProgressLocation.Notification, title: "PyNET: loading model…" },
       async () => {
         const port = await server.ensureStarted();
         const res = await fetch(`http://127.0.0.1:${port}/api/load-pnt-path`, {
@@ -97,7 +97,7 @@ async function openModel(
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     output.appendLine(`ERROR opening model: ${msg}`);
-    vscode.window.showErrorMessage(`PyNet: could not open model — ${msg}`);
+    vscode.window.showErrorMessage(`PyNET: could not open model — ${msg}`);
   }
 }
 

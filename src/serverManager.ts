@@ -1,7 +1,7 @@
 /**
  * serverManager.ts — owns the lifecycle of the bundled pnt_server.py (headless mode).
  *
- * The viewer is served by Python (mandatory in the PyNet infrastructure). This module finds a
+ * The viewer is served by Python (mandatory in the PyNET infrastructure). This module finds a
  * free port, spawns `python pnt_server.py --headless --port <p>` against the copy bundled in
  * media/viewer/server/, waits until it responds, and kills it on dispose. A single instance is
  * shared across viewer panels.

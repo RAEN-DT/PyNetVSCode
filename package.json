@@ -1,7 +1,7 @@
 {
-  "name": "pynet-platform",
-  "displayName": "PyNet Platform",
-  "description": "Embeds the That Open IFC viewer and installs/configures the PyNet MCP Bridge for Autodesk (Navisworks, Revit, Civil 3D) across your AI clients.",
+  "name": "pynet-viewer",
+  "displayName": "PyNET Viewer — BIM for VS Code",
+  "description": "Explore federated BIM models in VS Code and let your AI assistant drive Autodesk Navisworks, Revit and Civil 3D in natural language.",
   "version": "0.1.25",
   "publisher": "RAENDT",
   "author": {
@@ -13,9 +13,9 @@
     "vscode": "^1.90.0"
   },
   "categories": [
-    "Other",
     "AI",
-    "Visualization"
+    "Visualization",
+    "Other"
   ],
   "keywords": [
     "mcp",
@@ -25,7 +25,11 @@
     "revit",
     "civil3d",
     "pynet",
-    "autodesk"
+    "autodesk",
+    "3d viewer",
+    "clash detection",
+    "bim coordination",
+    "aec"
   ],
   "repository": {
     "type": "git",
@@ -48,30 +52,30 @@
       {
         "command": "pynet.openViewer",
         "title": "Open BIM Model",
-        "category": "PyNet",
+        "category": "PyNET",
         "icon": "$(add)"
       },
       {
         "command": "pynet.installBridge",
         "title": "Install / Repair MCP Bridge",
-        "category": "PyNet"
+        "category": "PyNET"
       },
       {
         "command": "pynet.clearRecent",
         "title": "Clear Recent Models",
-        "category": "PyNet",
+        "category": "PyNET",
         "icon": "$(clear-all)"
       },
       {
         "command": "pynet.removeRecent",
         "title": "Remove from Recent",
-        "category": "PyNet",
+        "category": "PyNET",
         "icon": "$(trash)"
       },
       {
         "command": "pynet.openLibrary",
         "title": "Open Reference Library",
-        "category": "PyNet",
+        "category": "PyNET",
         "icon": "$(book)"
       }
     ],
@@ -79,7 +83,7 @@
       "activitybar": [
         {
           "id": "pynet",
-          "title": "PyNet Platform",
+          "title": "PyNET Viewer",
           "icon": "media/Pynet.svg"
         }
       ]
@@ -96,7 +100,7 @@
     "viewsWelcome": [
       {
         "view": "pynet.home",
-        "contents": "Select PyNET viewer package to explore a BIM Model.\n[Open BIM Model](command:pynet.openViewer)"
+        "contents": "Open a PyNET package (.pnt) to explore a BIM model in 3D.\n[Open BIM Model](command:pynet.openViewer)"
       }
     ],
     "menus": {
@@ -141,7 +145,7 @@
       ]
     },
     "configuration": {
-      "title": "PyNet Platform",
+      "title": "PyNET Viewer",
       "properties": {
         "pynet.pythonPath": {
           "type": "string",
@@ -151,7 +155,7 @@
         "pynet.autoInstallBridgeOnStartup": {
           "type": "boolean",
           "default": true,
-          "description": "On first activation, install the PyNet MCP Bridge and configure detected AI clients if not already present."
+          "description": "On first activation, install the PyNET MCP Bridge and configure detected AI clients if not already present."
         },
         "pynet.viewerPort": {
           "type": "number",

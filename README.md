@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=RAENDT.pynet-platform"><img src="https://img.shields.io/visual-studio-marketplace/v/RAENDT.pynet-platform?label=marketplace&color=4388B1" alt="Marketplace"/></a>
-  <img src="https://img.shields.io/badge/python-3.10%20%E2%80%93%203.14-blue" alt="Python"/>
+  <a href="https://marketplace.visualstudio.com/items?itemName=RAENDT.pynet-viewer"><img src="https://img.shields.io/visual-studio-marketplace/v/RAENDT.pynet-viewer?label=marketplace&color=4388B1" alt="Marketplace"/></a>
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python"/>
   <img src="https://img.shields.io/badge/platform-Windows-lightgrey" alt="Windows"/>
   <img src="https://img.shields.io/badge/host-Visual%20Studio%20Code-0078D4" alt="Host"/>
   <img src="https://img.shields.io/badge/format-.pnt-orange" alt="Format"/>
@@ -50,7 +50,7 @@ so it can point at what it is describing:
 | Requirement | Detail |
 | :--- | :--- |
 | **Windows** | The Autodesk hosts are Windows-only. |
-| **Python 3.10 – 3.14** | Mandatory — both the bridge and the viewer server run on it. Auto-detected on `PATH`, or set `pynet.pythonPath`. |
+| **Python 3.10+** | Mandatory — both the bridge and the viewer server run on it. Auto-detected on `PATH`, or set `pynet.pythonPath`. |
 | **PyNet plugin** | Only needed to drive Autodesk from your AI client. **The viewer works without it.** |
 
 ---
@@ -63,7 +63,7 @@ so it can point at what it is describing:
 3. **Open a model.** Click the PyNET icon in the activity bar → **Open BIM Model**, and pick a
    `.pnt` package. Everything you open is kept in a recent list.
 
-> If a client was closed during setup, run **PyNet: Install / Repair MCP Bridge** from the command
+> If a client was closed during setup, run **PyNET: Install / Repair MCP Bridge** from the command
 > palette at any time — it is safe to re-run and re-detects everything.
 
 ---
@@ -76,7 +76,7 @@ to `%APPDATA%\Pynet\Library` and offers to open them the first time.
 
 Open that folder as a workspace and your assistant picks the routing up automatically — that is
 what turns *"write me a clash report"* into a script that runs first time. Reopen it whenever you
-like with **PyNet: Open Reference Library**.
+like with **PyNET: Open Reference Library**.
 
 ---
 
@@ -84,10 +84,10 @@ like with **PyNet: Open Reference Library**.
 
 | Command | Action |
 | :--- | :--- |
-| **PyNet: Open BIM Model** | Opens a `.pnt` package in the embedded 3D viewer. |
-| **PyNet: Install / Repair MCP Bridge** | Installs or upgrades the bridge and reconfigures every detected AI client. |
-| **PyNet: Open Reference Library** | Opens the installed reference docs as a folder. |
-| **PyNet: Clear Recent Models** | Empties the recent models list. |
+| **PyNET: Open BIM Model** | Opens a `.pnt` package in the embedded 3D viewer. |
+| **PyNET: Install / Repair MCP Bridge** | Installs or upgrades the bridge and reconfigures every detected AI client. |
+| **PyNET: Open Reference Library** | Opens the installed reference docs as a folder. |
+| **PyNET: Clear Recent Models** | Empties the recent models list. |
 
 ## ⚙️ Settings
 

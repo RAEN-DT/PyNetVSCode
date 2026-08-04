@@ -86,7 +86,7 @@ export async function installAndConfigure(
   const bridgeCommand = which("pynet-bridge");
   if (!bridgeCommand) {
     throw new Error(
-      "pynet-bridge was installed but its executable is not on PATH. Open a new terminal/session and run 'PyNet: Install / Repair MCP Bridge' again."
+      "pynet-bridge was installed but its executable is not on PATH. Open a new terminal/session and run 'PyNET: Install / Repair MCP Bridge' again."
     );
   }
   log(`Resolved bridge executable: ${bridgeCommand}`);
@@ -111,19 +111,19 @@ export async function runInstallCommand(output: vscode.OutputChannel): Promise<v
     const result = await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: "PyNet: installing MCP bridge…",
+        title: "PyNET: installing MCP bridge…",
         cancellable: false,
       },
       () => installAndConfigure((m) => output.appendLine(m))
     );
     const ok = result.clients.filter((c) => c.status === "configured").length;
     vscode.window.showInformationMessage(
-      `PyNet MCP bridge installed. Configured ${ok} AI client(s). Restart your AI clients to pick up the change.`
+      `PyNET MCP bridge installed. Configured ${ok} AI client(s). Restart your AI clients to pick up the change.`
     );
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     output.appendLine(`ERROR: ${msg}`);
-    vscode.window.showErrorMessage(`PyNet install failed: ${msg}`);
+    vscode.window.showErrorMessage(`PyNET install failed: ${msg}`);
   }
 }
 
