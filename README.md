@@ -58,10 +58,18 @@ Nothing is uploaded: the server binds to localhost and the model never leaves yo
 
 ## Links
 
-- [PyNet MCP Bridge](https://github.com/Rafael-NunezDeArenas/PyNetBridge) — the MCP server
-- [PyNet Library](https://github.com/Rafael-NunezDeArenas/PyNetLibrary) — reference scripts for Navisworks, Revit and Civil 3D
-- [Report an issue](https://github.com/Rafael-NunezDeArenas/PyNetVSCode/issues)
+- [PyNet MCP Bridge](https://github.com/RAEN-DT/PyNetBridge) — the MCP server
+- [PyNet Library](https://github.com/RAEN-DT/PyNetLibrary) — reference scripts for Navisworks, Revit and Civil 3D
+- [Report an issue](https://github.com/RAEN-DT/PyNetVSCode/issues)
 
 ## License
 
-MIT © [RAEN Digital Tools](https://github.com/Rafael-NunezDeArenas)
+MIT © [RAEN Digital Tools](https://github.com/RAEN-DT)
+
+---
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/RAEN-DT/PyNet/main/Assets/RAENDigitalTools.png" alt="RAEN Digital Tools" width="180"><br/><br/>
+  <sub>© 2026 RAEN Digital Tools · Todos los derechos reservados.<br/>
+  Obra inscrita en el Registro de la Propiedad Intelectual de la Comunidad de Madrid.</sub>
+</p>
