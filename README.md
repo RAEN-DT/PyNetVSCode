@@ -93,6 +93,10 @@ like with **PyNET: Open Reference Library**.
 
 ## ⌨️ Commands
 
+Everything the extension does is reachable from the command palette (`Ctrl+Shift+P`), so you never
+have to hunt through menus. Day to day you will only need the first one — the rest are there for
+setup and housekeeping.
+
 | Command | Action |
 | :--- | :--- |
 | **PyNET: Open BIM Model** | Opens a `.pnt` package in the embedded 3D viewer. |
@@ -101,6 +105,11 @@ like with **PyNET: Open Reference Library**.
 | **PyNET: Clear Recent Models** | Empties the recent models list. |
 
 ## ⚙️ Settings
+
+The defaults are meant to work untouched: the extension finds your Python, picks a free port and
+wires the bridge on first run. Reach for these only when your setup is unusual — several Python
+installations on the machine, a port already taken, or a managed environment where you would rather
+install the bridge yourself.
 
 | Setting | Default | Description |
 | :--- | :--- | :--- |
