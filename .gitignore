@@ -2,6 +2,9 @@ node_modules/
 dist/
 out/
 *.vsix
+*.exe
+viewer/dist_exe/
+viewer/server/build/
 .vscode-test/
 media/viewer/
 media/library/
