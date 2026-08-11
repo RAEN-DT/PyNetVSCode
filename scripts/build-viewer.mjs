@@ -1,9 +1,9 @@
 /**
  * build-viewer.mjs — build the That Open viewer and stage it into media/viewer/.
  *
- * The viewer source lives in the sibling PyNetLibrary repo (03_Viewer). This script builds it
- * (Vite → dist/) and copies the runtime files the bundled pnt_server expects, mirroring the
- * 03_Viewer/ layout so `_BASE = __file__/../..` resolves dist/ and dashboard/ correctly:
+ * The viewer source lives in this repo under viewer/. This script builds it (Vite → dist/) and
+ * copies the runtime files the bundled pnt_server expects, mirroring the viewer/ layout so
+ * `_BASE = __file__/../..` resolves dist/ and dashboard/ correctly:
  *
  *   media/viewer/
  *     ├─ dist/        (Vite build — includes worker/worker.mjs)
@@ -20,14 +20,12 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "..");
 
-const viewerSrc =
-  process.env.PYNET_VIEWER_DIR ??
-  resolve(repoRoot, "..", "PyNetLibrary", "03_Viewer");
+const viewerSrc = process.env.PYNET_VIEWER_DIR ?? resolve(repoRoot, "viewer");
 
 if (!existsSync(viewerSrc)) {
   console.error(
     `[build-viewer] Viewer source not found at: ${viewerSrc}\n` +
-      `Set PYNET_VIEWER_DIR to the 03_Viewer directory.`
+      `Set PYNET_VIEWER_DIR to the viewer directory.`
   );
   process.exit(1);
 }
