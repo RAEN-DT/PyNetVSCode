@@ -14,7 +14,8 @@
 #
 
 **PyNET Viewer** brings federated BIM models into VS Code and connects your AI assistant to
-Autodesk **Navisworks, Revit and Civil 3D** — so it can explore, explain and operate the model
+Autodesk **Navisworks**, **Revit** and **Civil 3D**, plus **Rhino**, **Tekla Structures** and
+**RIB Presto** — so it can explore, explain and operate the model
 in natural language, without leaving the editor.
 
 <p align="center">
@@ -32,7 +33,7 @@ Contact: **info@raendt.com** to request access.
 | :--- | :--- |
 | **3D BIM Viewer** | Open a `.pnt` package and navigate the federated model — spatial tree, element properties, sections, measurements and clash results. **Free, and works on its own.** |
 | **MCP Bridge setup** | One click installs `pynet-mcp-bridge` and configures every AI client it finds: Claude Desktop, Claude Code, Codex, Cline, Roo Code and GitHub Copilot. |
-| **Reference docs** | Installs the routing guides for each Autodesk host locally, so your assistant knows which API to reach for before it writes a line. |
+| **Reference docs** | Installs the routing guides for each supported host locally, so your assistant knows which API to reach for before it writes a line. |
 
 ---
 
@@ -60,9 +61,9 @@ pair it is talking about — column in red, slab in green, everything else hidde
 
 | Requirement | Detail |
 | :--- | :--- |
-| **Windows** | The Autodesk hosts are Windows-only. |
+| **Windows** | Every supported host is Windows-only. |
 | **Python 3.10+** | Mandatory — both the bridge and the viewer server run on it. Auto-detected on `PATH`, or set `pynet.pythonPath`. |
-| **PyNet plugin** | Only needed to drive Autodesk from your AI client. **The viewer works without it.** |
+| **PyNet plugin** | Only needed to drive a host application from your AI client. **The viewer works without it.** |
 
 ---
 
@@ -81,7 +82,7 @@ pair it is talking about — column in red, slab in green, everything else hidde
 
 ## 📚 The reference library
 
-Writing a script for Navisworks, Revit or Civil 3D means knowing which API applies, which imports
+Writing a script for any of the six hosts means knowing which API applies, which imports
 are allowed, and how the host expects to be addressed. The extension installs those routing guides
 to `%APPDATA%\Pynet\Library` and offers to open them the first time.
 
@@ -126,8 +127,8 @@ and embedded in a VS Code webview. A control channel lets the MCP bridge drive t
 isolate, fit, highlight clashes, read properties — so your assistant can point at what it is
 talking about while it talks about it.
 
-**Important note on AI providers:** PyNET is the integration layer between AI models and Autodesk
-tools. **Access to AI models (Claude, OpenAI, etc.) is not included** — you bring your own client
+**Important note on AI providers:** PyNET is the integration layer between AI models and your
+desktop BIM tools. **Access to AI models (Claude, OpenAI, etc.) is not included** — you bring your own client
 and subscription.
 
 ---
@@ -136,7 +137,7 @@ and subscription.
 
 * **Local execution.** The viewer server binds to localhost; the model never leaves your machine.
 * **Nothing uploaded.** No BIM data is transmitted externally at runtime.
-* **Validated scripts.** Anything the AI sends to an Autodesk host passes a static validator first.
+* **Validated scripts.** Anything the AI sends to a host passes a static validator first.
 * **AI-generated code** may be processed by the AI provider you choose to use.
 
 ---
@@ -145,9 +146,9 @@ and subscription.
 
 | Component | Repository | Purpose |
 | :--- | :--- | :--- |
-| **PyNet Platform** | [PyNet](https://github.com/RAEN-DT/PyNet) | Navisworks/Revit/Civil 3D plugin hosting the Python.NET engine |
+| **PyNet Platform** | [PyNet](https://github.com/RAEN-DT/PyNet) | Plugin for the six supported hosts, hosting the Python.NET engine |
 | **PyNet Bridge (MCP)** | [PyNetBridge](https://github.com/RAEN-DT/PyNetBridge) | MCP server connecting AI models to PyNET, with secure script validation |
-| **PyNet Library** | [PyNetLibrary](https://github.com/RAEN-DT/PyNetLibrary) | Reference scripts and AI context for the three hosts |
+| **PyNet Library** | [PyNetLibrary](https://github.com/RAEN-DT/PyNetLibrary) | Reference scripts and AI context for every supported host |
 | **PyNet for VS Code** | [PyNetVSCode](https://github.com/RAEN-DT/PyNetVSCode) | This extension — embedded viewer + one-click bridge setup |
 
 ---
